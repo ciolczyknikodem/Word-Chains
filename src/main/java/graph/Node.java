@@ -12,4 +12,8 @@ public class Node {
         this.word = word;
         this.adjacents = new HashSet<>();
     }
+
+    public void addAdjacent(Node node) {
+        adjacents.add(node);
+    }
 }
