@@ -16,4 +16,12 @@ public class Node {
     public void addAdjacent(Node node) {
         adjacents.add(node);
     }
+
+    public CharSequence getWord() {
+        return word;
+    }
+
+    public Set<Node> getAdjacents() {
+        return adjacents;
+    }
 }
