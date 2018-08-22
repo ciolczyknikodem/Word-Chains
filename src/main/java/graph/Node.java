@@ -24,4 +24,22 @@ public class Node {
     public Set<Node> getAdjacents() {
         return adjacents;
     }
+
+    public boolean hasWord(CharSequence word) {
+        return word.toString().equals(word.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Node node = (Node) o;
+        return word != null && word.equals(node.word);
+    }
+
+    @Override
+    public int hashCode() {
+        return word != null ? word.hashCode() : 0;
+    }
 }

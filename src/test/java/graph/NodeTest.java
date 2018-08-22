@@ -23,12 +23,23 @@ class NodeTest {
         node1.addAdjacent(node2);
     }
 
-
     @Test
     void getAdjacentsTest() {
         node1.addAdjacent(node2);
         Set<Node> adjacents = node1.getAdjacents();
 
         assertTrue(adjacents.contains(node2));
+    }
+
+    @Test
+    void compareIfNodeIsTheSameTest() {
+        CharSequence wordToCompare = "testWord1";
+
+        assertTrue(node1.hasWord(wordToCompare));
+    }
+
+    @Test
+    void nodeEqualsMethodReturnFalseWhenDifferentTest() {
+        assertTrue(!node1.equals(node2));
     }
 }
