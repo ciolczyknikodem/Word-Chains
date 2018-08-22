@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class ConsoleInputGetter {
 
-    public static String getStringInput(String message) {
-
+    public static String getStringInput() {
         String input = null;
         boolean isCorrectInput = false;
 
         while(!isCorrectInput) {
-            input = getStringInput();
+            input = getUserInput();
 
             if (input.trim().length() > 0) {
                 isCorrectInput = true;
@@ -19,7 +18,7 @@ public class ConsoleInputGetter {
         return input;
     }
 
-    private static String getStringInput() {
+    private static String getUserInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
