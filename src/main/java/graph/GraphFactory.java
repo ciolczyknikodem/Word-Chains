@@ -12,4 +12,8 @@ public class GraphFactory {
         this.wordList = wordList;
         this.startingWords = startingWords;
     }
+
+    public void handleBuildGraph() {
+
+    }
 }
