@@ -20,6 +20,20 @@ public class GraphFactory {
     public void handleBuildGraph() {
         Node current = initializeStartNode();
         setStartingWord(current);
+        
+        handleFillGraph(current);
+    }
+
+    private void handleFillGraph(Node current) {
+        Set<Node> nodes = current.getAdjacents();
+
+        for (Node element : nodes) {
+            findAdjacents(element);
+
+            if(!element.getAdjacents().isEmpty()) {
+                handleFillGraph(element);
+            }
+        }
     }
 
     private void findAdjacents(Node current) {
