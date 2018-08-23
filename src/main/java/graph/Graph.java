@@ -18,4 +18,8 @@ public class Graph {
     public Node getNode(CharSequence word) {
         return graph.get(word);
     }
+
+    public Map<CharSequence, Node> getGraph() {
+        return graph;
+    }
 }
