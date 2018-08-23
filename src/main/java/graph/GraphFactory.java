@@ -15,12 +15,10 @@ public class GraphFactory {
         this.graph = new Graph();
     }
 
-    public GraphFactory() {}
-
     public void handleBuildGraph() {
         Node current = initializeStartNode();
         setStartingWord(current);
-        
+
         handleFillGraph(current);
     }
 
