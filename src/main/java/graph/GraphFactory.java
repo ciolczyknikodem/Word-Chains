@@ -40,7 +40,7 @@ public class GraphFactory {
                 differences++;
             }
         }
-        return differences <= 1;
+        return differences == 1;
     }
 
     public void setStartingWord(Node node) {
