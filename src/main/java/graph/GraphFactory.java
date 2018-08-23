@@ -11,12 +11,17 @@ public class GraphFactory {
     public GraphFactory(Set<CharSequence> wordList, String[] startingWords) {
         this.wordList = wordList;
         this.startingWords = startingWords;
+        this.graph = new Graph();
     }
 
     public GraphFactory() {}
 
     public void handleBuildGraph() {
+        setStartingWord(initializeStartNode());
+    }
 
+    public void setStartingWord(Node node) {
+        graph.addNode(node);
     }
 
     public boolean isAdjacent(Node node, Node adjacent) {
@@ -32,5 +37,10 @@ public class GraphFactory {
             }
         }
         return differences <= 1;
+    }
+
+    private Node initializeStartNode() {
+        int START_NODE_INDEX = 0;
+        return new Node(startingWords[START_NODE_INDEX]);
     }
 }
