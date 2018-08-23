@@ -20,10 +20,16 @@ public class GraphFactory {
         Node current = initializeStartNode();
 
         setStartingWord(current);
-        buildGraph(current);
+        findAdjacents(current);
     }
+    
+    private void findAdjacents(Node current) {
+        for (CharSequence element : wordList) {
 
-    private void buildGraph(Node current) {
+            if (isAdjacent(current.getWord(), element)) {
+                current.addAdjacent(new Node(element));
+            }
+        }
     }
 
     public boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
