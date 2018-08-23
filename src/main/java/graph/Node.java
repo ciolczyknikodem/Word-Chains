@@ -26,7 +26,7 @@ public class Node {
     }
 
     public boolean hasWord(CharSequence word) {
-        return word.toString().equals(word.toString());
+        return this.word.equals(word.toString());
     }
 
     @Override
