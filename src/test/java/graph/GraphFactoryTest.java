@@ -1,22 +1,15 @@
 package graph;
 
-import com.sun.tools.classfile.Opcode;
-import dao.FileWordLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GraphFactoryTest {
-
-    private Graph graph;
     private GraphFactory graphFactory;
-
     private Node testNode1;
     private Node testNode2;
     private Node testNode3;
