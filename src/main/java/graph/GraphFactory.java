@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class GraphFactory {
@@ -18,31 +19,29 @@ public class GraphFactory {
     public void handleBuildGraph() {
         Node current = initializeStartNode();
         setStartingWord(current);
-
-        handleFillGraph(current);
+        
+        handleFillGraph();
     }
 
-    private void handleFillGraph(Node current) {
-        Set<Node> nodes = current.getAdjacents();
-
-        for (Node element : nodes) {
-            findAdjacents(element);
-
-            if(!element.getAdjacents().isEmpty()) {
-                handleFillGraph(element);
+    private void handleFillGraph() {
+        Map<CharSequence, Node> words = graph.getGraph();
+    
+        for (CharSequence element : wordList) {
+            
+            if(!words.containsKey(element)) {
+                Node node = new Node(element);
+                words.put(element, node);
+                
+                findAdjacent(node);
             }
         }
     }
 
-    private void findAdjacents(Node current) {
-        Iterator iterator = wordList.iterator();
-
-        while(iterator.hasNext()) {
-            CharSequence element = (CharSequence) iterator.next();
+    private void findAdjacent(Node current) {
+        for (CharSequence element : wordList) {
 
             if (isAdjacent(current.getWord(), element)) {
                 current.addAdjacent(new Node(element));
-                iterator.remove();
             }
         }
     }
@@ -67,7 +66,7 @@ public class GraphFactory {
         int START_NODE_INDEX = 0;
 
         Node node = new Node(startingWords[START_NODE_INDEX]);
-        findAdjacents(node);
+        findAdjacent(node);
 
         return node;
     }
