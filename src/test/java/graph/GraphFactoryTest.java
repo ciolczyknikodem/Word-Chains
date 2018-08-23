@@ -30,14 +30,14 @@ class GraphFactoryTest {
 
     @Test
     void checkIfNodeIsAdjacentTest() {
-        boolean isAdjacent = graphFactory.isAdjacent(testNode1, testNode2);
+        boolean isAdjacent = graphFactory.isAdjacent(testNode1.getWord(), testNode2.getWord());
 
         assertTrue(isAdjacent);
     }
 
     @Test
     void isAdjacentReturnFalseTest() {
-        boolean isAdjacent = graphFactory.isAdjacent(testNode1, testNode5);
+        boolean isAdjacent = graphFactory.isAdjacent(testNode1.getWord(), testNode5.getWord());
 
         assertTrue(!isAdjacent);
     }

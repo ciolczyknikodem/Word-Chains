@@ -17,18 +17,18 @@ public class GraphFactory {
     public GraphFactory() {}
 
     public void handleBuildGraph() {
-        setStartingWord(initializeStartNode());
+        Node current = initializeStartNode();
+
+        setStartingWord(current);
+        buildGraph(current);
     }
 
-    public void setStartingWord(Node node) {
-        graph.addNode(node);
+    private void buildGraph(Node current) {
     }
 
-    public boolean isAdjacent(Node node, Node adjacent) {
+    public boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
         int differences = 0;
 
-        CharSequence word = node.getWord();
-        CharSequence wordAdjacent = adjacent.getWord();
 
         int range = word.length();
         for (int i = 0; i < range; i++) {
@@ -37,6 +37,10 @@ public class GraphFactory {
             }
         }
         return differences <= 1;
+    }
+
+    public void setStartingWord(Node node) {
+        graph.addNode(node);
     }
 
     private Node initializeStartNode() {
