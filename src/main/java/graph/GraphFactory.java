@@ -18,11 +18,10 @@ public class GraphFactory {
 
     public void handleBuildGraph() {
         Node current = initializeStartNode();
-
         setStartingWord(current);
-        findAdjacents(current);
+
     }
-    
+
     private void findAdjacents(Node current) {
         for (CharSequence element : wordList) {
 
@@ -34,7 +33,6 @@ public class GraphFactory {
 
     public boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
         int differences = 0;
-
 
         int range = word.length();
         for (int i = 0; i < range; i++) {
@@ -51,6 +49,14 @@ public class GraphFactory {
 
     private Node initializeStartNode() {
         int START_NODE_INDEX = 0;
-        return new Node(startingWords[START_NODE_INDEX]);
+
+        Node node = new Node(startingWords[START_NODE_INDEX]);
+        findAdjacents(node);
+
+        return node;
+    }
+
+    public Graph getGraph() {
+        return graph;
     }
 }
