@@ -1,6 +1,8 @@
 package controller;
 
 import dao.FileWordLoader;
+import graph.Graph;
+import graph.GraphFactory;
 import tools.ClientConsole;
 import view.ConsoleView;
 
@@ -14,13 +16,17 @@ public class WordChain {
 
 
     public void handleSearchWordsChain() {
+        //TODO: Handle what happen - if statement don't pass
+
         String[] startingElements = prepareWordsForSearch();
         Set<CharSequence> wordList = initializeWordContainer(getWordsLength(startingElements));
 
         if (isWordExistInContainer(startingElements[START_WORD_INDEX], wordList) &&
                         isWordExistInContainer(startingElements[END_WORD_INDEX], wordList)) {
-            // TODO: initialize graph
+
+            initializeGraphFactory(wordList, startingElements);
             // TODO: searching algorithm
+
         } else {
             ConsoleView.display("Word(s) aren't in container, try type another.");
         }
@@ -42,5 +48,12 @@ public class WordChain {
 
     private boolean isWordExistInContainer(String word, Set<CharSequence> wordList) {
         return wordList.contains(word);
+    }
+
+    private Graph initializeGraphFactory(Set<CharSequence> wordList, String[] startingWords) {
+        GraphFactory factory = new GraphFactory(wordList, startingWords);
+        factory.handleBuildGraph();
+
+        return factory.getGraph();
     }
 }
