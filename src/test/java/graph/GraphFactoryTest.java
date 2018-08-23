@@ -35,4 +35,11 @@ class GraphFactoryTest {
         assertTrue(isAdjacent);
     }
 
+    @Test
+    void isAdjacentReturnFalseTest() {
+        boolean isAdjacent = graphFactory.isAdjacent(testNode1, testNode5);
+
+        assertTrue(!isAdjacent);
+    }
+
 }
