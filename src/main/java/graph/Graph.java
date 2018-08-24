@@ -33,7 +33,7 @@ public class Graph {
             Node currentNode = toVisit.poll();
 
             if (currentNode.hasWord(endWord)) {
-                return new LinkedList<>();
+                return buildPath(currentNode, parents);
             }
             visited.add(currentNode);
 
@@ -46,5 +46,17 @@ public class Graph {
                     });
         }
         return new LinkedList<>();
+    }
+
+    private Deque<Node> buildPath(Node node, Map<Node, Node> parents) {
+        Deque<Node> chainPath = new LinkedList<>();
+        Node current = node;
+
+        while (current != null) {
+            chainPath.push(current);
+            current = parents.get(current);
+        }
+
+        return chainPath;
     }
 }
