@@ -69,4 +69,14 @@ class GraphTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    void isLastElementInChainPathEqualsToEndWordTest() {
+        Deque<Node> chainPath = graph.findPath(startWord, endWord);
+
+        CharSequence expected = endWord;
+        CharSequence result = chainPath.getLast().getWord();
+
+        assertEquals(expected, result);
+    }
+
 }
