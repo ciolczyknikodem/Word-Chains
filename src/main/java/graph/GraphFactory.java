@@ -1,6 +1,5 @@
 package graph;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -56,19 +55,6 @@ public class GraphFactory {
             }
         }
         return differences == 1;
-    }
-
-    private void setStartingWord(Node node) {
-        graph.addNode(node);
-    }
-
-    private Node initializeStartNode() {
-        int START_NODE_INDEX = 0;
-
-        Node node = new Node(startingWords[START_NODE_INDEX]);
-        findAdjacent(node);
-
-        return node;
     }
 
     public Graph getGraph() {
