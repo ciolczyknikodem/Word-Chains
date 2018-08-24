@@ -18,11 +18,13 @@ class GraphTest {
     private CharSequence wordBetween1;
     private CharSequence wordBetween2;
     private CharSequence endWord;
+    private CharSequence wordNotConnected;
 
     private Node startNode;
     private Node nodeBetween1;
     private Node nodeBetween2;
     private Node endNode;
+    private Node nodeNotConnected;
 
     @BeforeEach
     void initializeGraphAndWordsForTest() {
@@ -31,11 +33,13 @@ class GraphTest {
         wordBetween1 = "cot";
         wordBetween2 = "cog";
         endWord = "dog";
+        wordNotConnected = "notConnectedWord";
 
         startNode = new Node(startWord);
         nodeBetween1 = new Node(wordBetween1);
         nodeBetween2 = new Node(wordBetween2);
         endNode = new Node(endWord);
+        nodeNotConnected = new Node(wordNotConnected);
 
         startNode.addAdjacent(nodeBetween1);
         nodeBetween1.addAdjacent(nodeBetween2);
@@ -45,6 +49,7 @@ class GraphTest {
         nodes.put(wordBetween1, nodeBetween1);
         nodes.put(wordBetween2, nodeBetween2);
         nodes.put(endWord, endNode);
+        nodes.put(wordNotConnected, nodeNotConnected);
 
         graph = new Graph(nodes);
     }
@@ -103,6 +108,13 @@ class GraphTest {
     @Test
     void bothWordForSearchAreNotPresentInGraphTest() {
         Deque<Node> chainPath = graph.searchForChainPath("wrongStartWord", "wrongEndWord");
+
+        assertTrue(chainPath.isEmpty());
+    }
+
+    @Test
+    void notConnectedWordShouldReturnEmptyListTest() {
+        Deque<Node> chainPath = graph.searchForChainPath(wordNotConnected, endWord);
 
         assertTrue(chainPath.isEmpty());
     }
