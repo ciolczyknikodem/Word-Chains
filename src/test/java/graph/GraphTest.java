@@ -79,4 +79,10 @@ class GraphTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    void isChainPathContainsWordBetweenTest() {
+        Deque<Node> chainPath = graph.findPath(startWord, endWord);
+
+        assertTrue(chainPath.contains(nodeBetween1));
+    }
 }
