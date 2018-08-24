@@ -23,8 +23,7 @@ class GraphFactoryTest {
         testNode4 = new Node("bug");
 
         Set set = Mockito.mock(Set.class);
-        String[] test = new String[] {testNode1.getWord().toString(), testNode2.getWord().toString()};
-        graphFactory = new GraphFactory(set, test);
+        graphFactory = new GraphFactory(set);
 
     }
 
