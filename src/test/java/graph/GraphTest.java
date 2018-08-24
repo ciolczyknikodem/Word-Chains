@@ -61,7 +61,7 @@ class GraphTest {
 
     @Test
     void isFirstChainInChainPathEqualsToStartingWordTest() {
-        Deque<Node> chainPath = graph.findPath(startWord, endWord);
+        Deque<Node> chainPath = graph.searchForChainPath(startWord, endWord);
 
         CharSequence expected = startWord;
         CharSequence result = chainPath.getFirst().getWord();
@@ -71,7 +71,7 @@ class GraphTest {
 
     @Test
     void isLastElementInChainPathEqualsToEndWordTest() {
-        Deque<Node> chainPath = graph.findPath(startWord, endWord);
+        Deque<Node> chainPath = graph.searchForChainPath(startWord, endWord);
 
         CharSequence expected = endWord;
         CharSequence result = chainPath.getLast().getWord();
@@ -81,8 +81,30 @@ class GraphTest {
 
     @Test
     void isChainPathContainsWordBetweenTest() {
-        Deque<Node> chainPath = graph.findPath(startWord, endWord);
+        Deque<Node> chainPath = graph.searchForChainPath(startWord, endWord);
 
         assertTrue(chainPath.contains(nodeBetween1));
     }
+
+    @Test
+    void wrongFirstWordShouldReturnEmptyListTest() {
+        Deque<Node> chainPath = graph.searchForChainPath("wrongWord", endWord);
+
+        assertTrue(chainPath.isEmpty());
+    }
+
+    @Test
+    void wrongEndWordShouldReturnEmptyListTest() {
+        Deque<Node> chainPath = graph.searchForChainPath(startWord, "wrongWord");
+
+        assertTrue(chainPath.isEmpty());
+    }
+
+    @Test
+    void bothWordForSearchAreNotPresentInGraphTest() {
+        Deque<Node> chainPath = graph.searchForChainPath("wrongStartWord", "wrongEndWord");
+
+        assertTrue(chainPath.isEmpty());
+    }
+
 }
