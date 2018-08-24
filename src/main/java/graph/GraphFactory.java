@@ -9,12 +9,10 @@ public class GraphFactory {
     private Map<CharSequence, Set<CharSequence>> wordsProcessed;
     private Map<CharSequence, Node> nodes;
     private Set<CharSequence> wordList;
-    private String[] startingWords;
     private Graph graph;
 
-    public GraphFactory(Set<CharSequence> wordList, String[] startingWords) {
+    public GraphFactory(Set<CharSequence> wordList) {
         this.wordList = wordList;
-        this.startingWords = startingWords;
         this.graph = new Graph();
 
         nodes = graph.getGraph();
