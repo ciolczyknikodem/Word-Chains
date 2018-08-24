@@ -3,9 +3,11 @@ package controller;
 import dao.FileWordLoader;
 import graph.Graph;
 import graph.GraphFactory;
+import graph.Node;
 import tools.ClientConsole;
 import view.ConsoleView;
 
+import java.util.Deque;
 import java.util.Set;
 
 public class WordChain {
@@ -24,8 +26,13 @@ public class WordChain {
         if (isWordExistInContainer(startingElements[START_WORD_INDEX], wordList) &&
                         isWordExistInContainer(startingElements[END_WORD_INDEX], wordList)) {
 
-            initializeGraphFactory(wordList, startingElements);
-            // TODO: searching algorithm
+            Graph graph = initializeGraphFactory(wordList);
+            Deque<Node> chainPath = graph.findPath(
+                    startingElements[START_WORD_INDEX],
+                    startingElements[END_WORD_INDEX]
+            );
+
+            chainPath.forEach(node -> ConsoleView.display(node.getWord().toString()));
 
         } else {
             ConsoleView.display("Word(s) aren't in container, try type another.");
