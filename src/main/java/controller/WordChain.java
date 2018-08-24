@@ -57,8 +57,8 @@ public class WordChain {
         return wordList.contains(word);
     }
 
-    private Graph initializeGraphFactory(Set<CharSequence> wordList, String[] startingWords) {
-        GraphFactory factory = new GraphFactory(wordList, startingWords);
+    private Graph initializeGraphFactory(Set<CharSequence> wordList) {
+        GraphFactory factory = new GraphFactory(wordList);
         factory.handleBuildGraph();
 
         return factory.getGraph();
