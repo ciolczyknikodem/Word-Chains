@@ -18,10 +18,6 @@ public class Graph {
         return graph.get(word);
     }
 
-    public Map<CharSequence, Node> getGraph() {
-        return graph;
-    }
-
     public Deque<Node> findPath(CharSequence startWord, CharSequence endWord) {
         Map<Node, Node> parents = new HashMap<>();
         Queue<Node> toVisit = new LinkedList<>();
