@@ -1,10 +1,12 @@
 package graph;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class GraphFactory {
 
+    private Map<CharSequence, Set<CharSequence>> wordsProcessed;
     private Set<CharSequence> wordList;
     private String[] startingWords;
     private Graph graph;
@@ -16,33 +18,21 @@ public class GraphFactory {
     }
 
     public void handleBuildGraph() {
-        Node current = initializeStartNode();
-        setStartingWord(current);
-        
-        handleFillGraph();
+        prepareWordsForGraph();
     }
 
-    private void handleFillGraph() {
-        Map<CharSequence, Node> words = graph.getGraph();
-    
-        for (CharSequence element : wordList) {
-            
-            if(!words.containsKey(element)) {
-                Node node = new Node(element);
-                words.put(element, node);
-                
-                findAdjacent(node);
-            }
-        }
+    private void prepareWordsForGraph() {
+        wordList.forEach(word -> wordsProcessed.putIfAbsent(word, findAdjacent(word)));
     }
 
-    private void findAdjacent(Node current) {
-        for (CharSequence element : wordList) {
+    private Set<CharSequence> findAdjacent(CharSequence word) {
+        Set<CharSequence> adjacentWords = new HashSet<>();
 
-            if (isAdjacent(current.getWord(), element)) {
-                current.addAdjacent(new Node(element));
-            }
-        }
+        wordList.stream()
+                .filter(element -> isAdjacent(element, word))
+                .forEach(adjacentWords::add);
+
+        return adjacentWords;
     }
 
     public boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
