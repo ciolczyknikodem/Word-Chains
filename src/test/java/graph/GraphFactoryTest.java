@@ -58,6 +58,6 @@ class GraphFactoryTest {
     void isAdjacentReturnFalseTest() {
         boolean isAdjacent = graphFactory.isAdjacent(testNode1.getWord(), testNode4.getWord());
 
-        assertTrue(!isAdjacent);
+        assertFalse(isAdjacent);
     }
 }
