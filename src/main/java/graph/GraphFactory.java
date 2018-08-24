@@ -1,5 +1,6 @@
 package graph;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -12,8 +13,9 @@ public class GraphFactory {
     private Graph graph;
 
     public GraphFactory(Set<CharSequence> wordList) {
-        this.wordList = wordList;
+        this.wordsProcessed = new HashMap<>();
         this.graph = new Graph();
+        this.wordList = wordList;
 
         nodes = graph.getGraph();
     }
