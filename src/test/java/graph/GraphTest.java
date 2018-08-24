@@ -59,4 +59,14 @@ class GraphTest {
         assertEquals(expected, result.getWord());
     }
 
+    @Test
+    void isFirstChainInChainPathEqualsToStartingWordTest() {
+        Deque<Node> chainPath = graph.findPath(startWord, endWord);
+
+        String expected = startWord.toString();
+        String result = chainPath.getFirst().getWord().toString();
+
+        assertEquals(expected, result);
+    }
+
 }
