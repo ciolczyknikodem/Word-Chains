@@ -6,8 +6,8 @@ public class Graph {
 
     private final Map<CharSequence, Node> graph;
 
-    public Graph() {
-        graph = new HashMap<>();
+    public Graph(Map<CharSequence, Node> nodes) {
+        this.graph = nodes;
     }
 
     public void addNode(Node node) {
