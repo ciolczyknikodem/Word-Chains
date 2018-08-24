@@ -23,9 +23,9 @@ public class Graph {
     }
 
     public Deque<Node> findPath(CharSequence startWord, CharSequence endWord) {
+        Map<Node, Node> parents = new HashMap<>();
         Queue<Node> toVisit = new LinkedList<>();
         Set<Node> visited = new HashSet<>();
-        Map<Node, Node> parents = new HashMap<>();
 
         toVisit.add(getNode(startWord));
 
@@ -36,7 +36,14 @@ public class Graph {
                 return new LinkedList<>();
             }
             visited.add(currentNode);
-            
+
+            currentNode.getAdjacents()
+                    .stream()
+                    .filter(adjacent -> !visited.contains(adjacent))
+                    .forEach(adjacent -> {
+                        toVisit.add(adjacent);
+                        parents.putIfAbsent(adjacent, currentNode);
+                    });
         }
         return new LinkedList<>();
     }
