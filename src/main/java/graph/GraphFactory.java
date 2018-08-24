@@ -22,8 +22,15 @@ public class GraphFactory {
 
     public void handleBuildGraph() {
         prepareWordsForGraph();
+        buildGraph();
     }
 
+    private void buildGraph() {
+        wordsProcessed.keySet()
+                .stream()
+                .map(this::getNodeFor)
+                .forEach(node -> addAdjacentWords(node, getWordsFor(node)));
+    }
 
     private void addAdjacentWords(Node node, Set<CharSequence> words) {
         words.stream()
