@@ -37,6 +37,10 @@ class GraphTest {
         nodeBetween2 = new Node(wordBetween2);
         endNode = new Node(endWord);
 
+        startNode.addAdjacent(nodeBetween1);
+        nodeBetween1.addAdjacent(nodeBetween2);
+        nodeBetween2.addAdjacent(endNode);
+
         nodes.put(startWord, startNode);
         nodes.put(wordBetween1, nodeBetween1);
         nodes.put(wordBetween2, nodeBetween2);
