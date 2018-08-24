@@ -1,7 +1,6 @@
 package graph;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Graph {
 
@@ -21,5 +20,14 @@ public class Graph {
 
     public Map<CharSequence, Node> getGraph() {
         return graph;
+    }
+
+    public Deque<Node> findPath(CharSequence startWord, CharSequence endWord) {
+        Queue<Node> toVisit = new LinkedList<>();
+        Set<Node> visited = new HashSet<>();
+        Map<Node, Node> parents = new HashMap<>();
+
+        toVisit.add(getNode(startWord));
+
     }
 }
