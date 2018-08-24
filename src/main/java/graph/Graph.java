@@ -29,5 +29,15 @@ public class Graph {
 
         toVisit.add(getNode(startWord));
 
+        while(!toVisit.isEmpty()) {
+            Node currentNode = toVisit.poll();
+
+            if (currentNode.hasWord(endWord)) {
+                return new LinkedList<>();
+            }
+            visited.add(currentNode);
+            
+        }
+        return new LinkedList<>();
     }
 }
