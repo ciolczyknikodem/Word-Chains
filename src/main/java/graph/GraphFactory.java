@@ -7,6 +7,7 @@ import java.util.Set;
 public class GraphFactory {
 
     private Map<CharSequence, Set<CharSequence>> wordsProcessed;
+    private Map<CharSequence, Node> nodes;
     private Set<CharSequence> wordList;
     private String[] startingWords;
     private Graph graph;
@@ -15,10 +16,17 @@ public class GraphFactory {
         this.wordList = wordList;
         this.startingWords = startingWords;
         this.graph = new Graph();
+
+        nodes = graph.getGraph();
     }
 
     public void handleBuildGraph() {
         prepareWordsForGraph();
+    }
+
+    private Node getNodeFor(CharSequence word) {
+        nodes.computeIfAbsent(word, value -> new Node(value));
+        return nodes.get(word);
     }
 
     private void prepareWordsForGraph() {
