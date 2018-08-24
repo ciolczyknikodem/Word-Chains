@@ -24,6 +24,12 @@ public class GraphFactory {
         prepareWordsForGraph();
     }
 
+    private void addAdjacentWords(Node node, Set<CharSequence> words) {
+        words.stream()
+                .map(this::getNodeFor)
+                .forEach(node::addAdjacent);
+    }
+
     private Node getNodeFor(CharSequence word) {
         nodes.computeIfAbsent(word, value -> new Node(value));
         return nodes.get(word);
