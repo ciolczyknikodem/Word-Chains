@@ -24,6 +24,7 @@ public class GraphFactory {
         prepareWordsForGraph();
     }
 
+
     private void addAdjacentWords(Node node, Set<CharSequence> words) {
         words.stream()
                 .map(this::getNodeFor)
@@ -59,6 +60,10 @@ public class GraphFactory {
             }
         }
         return differences == 1;
+    }
+
+    private Set<CharSequence> getWordsFor(Node node) {
+        return wordsProcessed.get(node.getWord());
     }
 
     public Graph getGraph() {
