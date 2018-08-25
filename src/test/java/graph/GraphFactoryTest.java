@@ -52,20 +52,6 @@ class GraphFactoryTest {
     }
 
     @Test
-    void checkIfNodeIsAdjacentTest() {
-        boolean isAdjacent = graphFactory.isAdjacent(testNode1.getWord(), testNode2.getWord());
-
-        assertTrue(isAdjacent);
-    }
-
-    @Test
-    void isAdjacentReturnFalseTest() {
-        boolean isAdjacent = graphFactory.isAdjacent(testNode1.getWord(), testNode4.getWord());
-
-        assertFalse(isAdjacent);
-    }
-
-    @Test
     void isGraphFactoryAddNodeCorrectlyTest() {
         Map<CharSequence, Node> nodes = graphFactory.initializeGraph().getGraph();
 

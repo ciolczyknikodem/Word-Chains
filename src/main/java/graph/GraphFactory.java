@@ -54,7 +54,7 @@ public class GraphFactory {
         return adjacentWords;
     }
 
-    public boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
+    private boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
         int differences = 0;
 
         int range = word.length();
