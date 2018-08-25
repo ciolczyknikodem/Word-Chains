@@ -1,11 +1,7 @@
 package graph;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.mockito.Mockito;
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -20,12 +16,6 @@ class GraphFactoryTest {
     private CharSequence word2;
     private CharSequence word3;
     private CharSequence word4;
-    
-    private Node testNode1;
-    private Node testNode2;
-    private Node testNode3;
-    private Node testNode4;
-
 
     @BeforeEach
     void initializeEnvironmentForTest() {
@@ -33,11 +23,6 @@ class GraphFactoryTest {
         word2 = "cot";
         word3 = "dog";
         word4 = "bug";
-
-        testNode1 = new Node(word1);
-        testNode2 = new Node(word2);
-        testNode3 = new Node(word3);
-        testNode4 = new Node(word4);
 
         wordsContainer = new HashSet<>();
 
