@@ -62,6 +62,6 @@ public class WordChain {
         GraphFactory factory = new GraphFactory(wordList);
         factory.handleBuildGraph();
 
-        return factory.getGraph();
+        return factory.initializeGraph();
     }
 }

@@ -70,7 +70,7 @@ public class GraphFactory {
         return wordsProcessed.get(node.getWord());
     }
 
-    public Graph getGraph() {
+    public Graph initializeGraph() {
         return new Graph(nodes);
     }
 }

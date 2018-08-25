@@ -67,14 +67,14 @@ class GraphFactoryTest {
 
     @Test
     void isGraphFactoryAddNodeCorrectlyTest() {
-        Map<CharSequence, Node> nodes = graphFactory.getGraph().getGraph();
+        Map<CharSequence, Node> nodes = graphFactory.initializeGraph().getGraph();
 
         assertTrue(nodes.containsKey(word1));
     }
 
     @Test
     void lookForWordNotExistInGraphTest() {
-        Map<CharSequence, Node> nodes = graphFactory.getGraph().getGraph();
+        Map<CharSequence, Node> nodes = graphFactory.initializeGraph().getGraph();
 
         assertFalse(nodes.containsKey("wrongKey"));
     }
