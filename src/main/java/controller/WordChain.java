@@ -13,8 +13,8 @@ import java.util.Set;
 public class WordChain {
 
     private static String filePath = "src/main/resources/wordlist/wordlist.txt";
-    private static int START_WORD_INDEX = 0;
-    private static int END_WORD_INDEX = 1;
+    private final int START_WORD_INDEX = 0;
+    private final int END_WORD_INDEX = 1;
 
 
     public void handleSearchWordsChain() {
@@ -27,7 +27,8 @@ public class WordChain {
                         isWordExistInContainer(startingElements[END_WORD_INDEX], wordList)) {
 
             Graph graph = initializeGraphFactory(wordList);
-            Deque<Node> chainPath = graph.findPath(
+
+            Deque<Node> chainPath = graph.searchForChainPath(
                     startingElements[START_WORD_INDEX],
                     startingElements[END_WORD_INDEX]
             );
