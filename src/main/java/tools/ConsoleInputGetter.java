@@ -19,7 +19,7 @@ public class ConsoleInputGetter {
                 isCorrectInput = true;
             }
         }
-        return input;
+        return input.toLowerCase();
     }
 
     private static String getUserInput() {
