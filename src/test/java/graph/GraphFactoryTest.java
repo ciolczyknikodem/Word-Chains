@@ -49,4 +49,15 @@ class GraphFactoryTest {
 
         assertFalse(nodes.containsKey("wrongKey"));
     }
+
+    @Test
+    void isAdjacentForWordAddsCorrectlyTest() {
+        Map<CharSequence, Node> nodes = graphFactory.initializeGraph().getGraph();
+        Set<Node> adjacentWords = nodes.get(word1).getAdjacents();
+
+        CharSequence result = adjacentWords.iterator().next().getWord();
+        CharSequence expected = word2;
+
+       assertEquals(expected, result);
+    }
 }
