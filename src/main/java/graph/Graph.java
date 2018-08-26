@@ -65,4 +65,8 @@ public class Graph {
 
         return chainPath;
     }
+
+    public Map<CharSequence, Node> getGraph() {
+        return graph;
+    }
 }
