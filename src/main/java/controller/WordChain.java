@@ -18,8 +18,6 @@ public class WordChain {
 
 
     public void handleSearchWordsChain() {
-        //TODO: Handle what happen - if statement don't pass
-
         String[] startingElements = prepareWordsForSearch();
         Set<CharSequence> wordList = initializeWordContainer(getWordsLength(startingElements));
 
