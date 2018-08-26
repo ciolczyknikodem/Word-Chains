@@ -18,17 +18,23 @@ public class Graph {
         return graph.get(word);
     }
 
-    public Map<CharSequence, Node> getGraph() {
-        return graph;
+    public Deque<Node> searchForChainPath(CharSequence startWord, CharSequence endWord) {
+        if (isBothNodesExistFor(startWord, endWord)) {
+            return findPath(startWord, endWord);
+        }
+        return new LinkedList<>();
     }
 
-    public Deque<Node> findPath(CharSequence startWord, CharSequence endWord) {
+    private boolean isBothNodesExistFor(CharSequence startWord, CharSequence endWord) {
+        return graph.containsKey(startWord) && graph.containsKey(endWord);
+    }
+
+    private Deque<Node> findPath(CharSequence startWord, CharSequence endWord) {
         Map<Node, Node> parents = new HashMap<>();
         Queue<Node> toVisit = new LinkedList<>();
         Set<Node> visited = new HashSet<>();
 
         toVisit.add(getNode(startWord));
-
         while(!toVisit.isEmpty()) {
             Node currentNode = toVisit.poll();
 
@@ -58,5 +64,9 @@ public class Graph {
         }
 
         return chainPath;
+    }
+
+    public Map<CharSequence, Node> getGraph() {
+        return graph;
     }
 }

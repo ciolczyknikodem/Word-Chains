@@ -18,6 +18,7 @@ public class ClientConsole {
             if (isWordsLengthSame(startWord, endWord)) {
                 return new String[]{startWord, endWord};
             }
+            ConsoleView.display("Words must be the same length!");
         }
     }
 

@@ -10,14 +10,11 @@ public class GraphFactory {
     private Map<CharSequence, Set<CharSequence>> wordsProcessed;
     private Map<CharSequence, Node> nodes;
     private Set<CharSequence> wordList;
-    private Graph graph;
 
     public GraphFactory(Set<CharSequence> wordList) {
         this.wordsProcessed = new HashMap<>();
-        this.graph = new Graph();
+        this.nodes = new HashMap<>();
         this.wordList = wordList;
-
-        nodes = graph.getGraph();
     }
 
     public void handleBuildGraph() {
@@ -57,7 +54,7 @@ public class GraphFactory {
         return adjacentWords;
     }
 
-    public boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
+    private boolean isAdjacent(CharSequence word, CharSequence wordAdjacent) {
         int differences = 0;
 
         int range = word.length();
@@ -73,7 +70,7 @@ public class GraphFactory {
         return wordsProcessed.get(node.getWord());
     }
 
-    public Graph getGraph() {
-        return graph;
+    public Graph initializeGraph() {
+        return new Graph(nodes);
     }
 }
