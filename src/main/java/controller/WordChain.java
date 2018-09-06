@@ -1,9 +1,11 @@
 package controller;
 
 import dao.FileWordLoader;
+import dao.WordLoader;
 import graph.Graph;
 import graph.GraphFactory;
 import graph.Node;
+import model.ChainPath;
 import tools.ClientConsole;
 import view.ConsoleView;
 
@@ -38,6 +40,32 @@ public class WordChain {
         }
     }
 
+    public ChainPath handleSearchWordChain(ChainPath chainPath) {
+        Set<CharSequence> wordList = initializeWordContainer(getWordsLength(new String[] {
+                (String) chainPath.getStartWord(),
+                (String) chainPath.getEndWord()
+        }));
+        Deque<Node> result = null;
+
+        if (isWordExistInContainer((String) chainPath.getStartWord(), wordList) &&
+                isWordExistInContainer((String) chainPath.getEndWord(), wordList)) {
+
+            Graph graph = initializeGraphFactory(wordList);
+
+            result = graph.searchForChainPath(
+                    chainPath.getStartWord(),
+                    chainPath.getEndWord()
+            );
+
+            result.forEach(node -> ConsoleView.display(node.getWord().toString()));
+
+        } else {
+            ConsoleView.display("Word(s) aren't in container, try type another.");
+        }
+        chainPath.setChainPath(result);
+        return chainPath;
+    }
+
     private String[] prepareWordsForSearch() {
         ClientConsole clientConsole = new ClientConsole();
         return clientConsole.getWordsFromUser();
@@ -48,7 +76,7 @@ public class WordChain {
     }
 
     private Set<CharSequence> initializeWordContainer(int wordLength) {
-        FileWordLoader wordLoader = new FileWordLoader(filePath, wordLength);
+        WordLoader wordLoader = new FileWordLoader(filePath, wordLength);
         return wordLoader.loadWords();
     }
 
