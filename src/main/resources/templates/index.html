@@ -7,10 +7,12 @@
 </head>
 <body>
     <div>
-        <form action="result" th:action="@{/result}" method="post">
-                <input type="text" name="startWord"/>
-                <input type="text" name="endWord"/>
-                <input type="submit" value="FIND CHAIN PATH"/>
+        <form action="result" th:action="@{/result}" th:object="${chainPath}" method="post">
+
+                <input type="text" th:filed="*{startWord}" name="startWord"/>
+                <input type="text" th:field="*{endWord}" name="endWord"/>
+
+            <input type="submit" value="FIND CHAIN PATH"/>
         </form>
     </div>
 </body>
